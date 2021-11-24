@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LoginService } from './../../services/login.service';
+
 @Component({
   selector: 'shared-header',
   templateUrl: './header.component.html',
@@ -7,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
+  render: boolean = false; 
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.showMenu.subscribe(show => this.render = show)
   }
 
 }

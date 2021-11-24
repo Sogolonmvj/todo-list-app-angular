@@ -14,6 +14,8 @@ export class TodoListItemComponent implements OnInit {
   @Output() warnTaskWasDone: EventEmitter<any> = new EventEmitter(); // prop that goes from child to parent
   @ViewChild('checkboxInput') checkboxInput?: ElementRef; // reference to this element
 
+  tasksList: Task[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class TodoListItemComponent implements OnInit {
   }
 
   markAsDone(event: MatCheckboxChange) {
-    console.log(this.checkboxInput);
+    // console.log(this.checkboxInput);
     this.warnTaskWasDone.emit({ id: this.taskId, value: event.checked });
   }
 
