@@ -1,6 +1,6 @@
 <div *ngIf="task" class="item-container">
   <mat-checkbox #checkboxInput [checked]="task.done" (change)="markAsDone($event)"></mat-checkbox>
-  <mat-expansion-panel [ngClass]="{ 'bg-red': task.priority === 'High' }" *ngIf="task" style="flex: 1; margin: 0 10px">
+  <mat-expansion-panel [ngClass]="{ 'bg-yellow': task.done }" *ngIf="task" style="flex: 1; margin: 0 10px">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ task.title }}
@@ -10,10 +10,9 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <ul>
-        <li>Data de Entrega: {{ task.dueDate }}</li>
-        <li>Prioridade: {{ task.priority }}</li>
-        <li>Feita: {{ task.done? 'Sim' : 'Não' }}</li>
+        <li>Done: {{ task.done ? 'Yes' : 'No' }}</li>
       </ul>
       <ng-content></ng-content>
+      <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon>
   </mat-expansion-panel>
 </div>

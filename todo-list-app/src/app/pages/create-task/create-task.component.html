@@ -1,1 +1,29 @@
-<p>create-task works!</p>
+<mat-card>
+    <h1>Create a New Task</h1>
+    <form class="form-content" *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Id</mat-label>
+            <input type="number" matInput formControlName="id">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input type="text" matInput formControlName="title" placeholder="Write the title of the task here!">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description" placeholder="Describe the task here!">
+        </mat-form-field>
+
+        <input type="submit" mat-button color="primary">
+    </form>
+</mat-card>
+
+<!-- id: '2',
+    //       title: "Fazer a Atividade 05 da Forca 2.0",
+    //       description: "Devo reunir com meu grupo, implementar e testar o trabalho.",
+    //       dueDate: new Date(),
+    //       priority: TaskPriority.High,
+    //       labels: [],
+    //       done: false, -->

@@ -23,26 +23,22 @@ export class TodoListItemComponent implements OnInit {
   }
 
   getColor(): string {
-    switch(this.task?.priority) {
-      case "Low":
+    switch(this.task?.done) {
+      case true:
         return "#f5e769"; 
-      case "Medium":
+      case false:
         return "#f5b869";
-      case "High":
-        return "#f56969";
       default:
         return "white";
     }
   }
 
   getClass(): string {
-    switch(this.task?.priority) {
-      case "Low":
+    switch(this.task?.done) {
+      case true:
         return "bg-yellow";
-      case "Medium":
+      case false:
         return "bg-orange";
-      case "High":
-        return "bg-red";
       default:
         return "";
     }

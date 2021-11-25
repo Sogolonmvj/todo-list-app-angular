@@ -1,18 +1,16 @@
 <mat-card>
+    <h1>Log-In</h1>
     <form class="form-content" *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput formControlName="login" placeholder="Digite seu login!">
+            <input matInput formControlName="login" autocomplete="email" placeholder="Your login here!">
         </mat-form-field>
 
-        <mat-form-field  appearance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password" placeholder="Digite sua senha!">
+            <input matInput type="password" autocomplete="current-password" formControlName="password" placeholder="Your password here!">
         </mat-form-field>
 
-        <input type="submit" mat-button color="primary" maInput>
-        <!-- <button (click)="onSubmit()" mat-button color="primary">
-            Submit
-        </button> -->
+        <input type="submit" mat-button color="primary">
     </form>
 </mat-card>

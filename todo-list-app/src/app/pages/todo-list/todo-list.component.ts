@@ -34,12 +34,12 @@ export class TodoListComponent implements OnInit {
   }
 
   markTaskAsDone(obj: { id: number; value: boolean }) {
-    // const id = obj.id;
-    // const done = obj.value;
+    const id = obj.id;
+    const done = obj.value;
 
-    // console.log(this.tasksList[id].done);
-    // this.tasksList[id].done = done;
-    // console.log(this.tasksList[id].done);
+    console.log(this.tasksList$); // to continue
+    // this.tasksList$.done = done;
+    // console.log(this.tasksList$[id].done);
   }
 
   // ngOnDestroy() {
