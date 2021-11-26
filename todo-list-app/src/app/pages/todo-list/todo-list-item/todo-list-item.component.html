@@ -13,6 +13,9 @@
         <li>Done: {{ task.done ? 'Yes' : 'No' }}</li>
       </ul>
       <ng-content></ng-content>
-      <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon>
+      <div class="place">
+        <mat-icon (click)="onEdit(task)" class="settings" aria-hidden="false" aria-label="edit">edit</mat-icon>
+        <mat-icon (click)="deleteTask(task)" class="settings" aria-hidden="false" aria-label="delete">delete</mat-icon>
+      </div>
   </mat-expansion-panel>
 </div>

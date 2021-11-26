@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { TodoListService } from './../../services/todo-list.service';
 
 import { Task } from './../../models/task.model';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -24,7 +25,7 @@ export class TodoListComponent implements OnInit {
       next: () => console.log("Accessed the data!"),
       error: (error) => console.log(error),
       complete: () => console.log("Access finished!")
-    },);
+    });
 
     // this.sub = this.todoListService.getTasks().subscribe((tasksList: Task[]) => {
     //   // this.tasksList = tasksList;

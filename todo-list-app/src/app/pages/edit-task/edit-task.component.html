@@ -1,1 +1,16 @@
-<p>edit-task works!</p>
+<mat-card>
+    <h1>Edit Task</h1>
+    <form class="form-content" *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="updateTask()">
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input type="text" matInput formControlName="title" placeholder="Write the title of the task here!">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description" placeholder="Describe the task here!">
+        </mat-form-field>
+
+        <input class="colour space style" type="submit" mat-button color="primary">
+    </form>
+</mat-card>

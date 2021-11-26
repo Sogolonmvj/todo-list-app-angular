@@ -1,0 +1,18 @@
+.colour {
+    background-color: #f56969;
+    border-radius: 10px;
+    border-width: 10px;
+    border-color: #f56969;
+    color: white;
+}
+
+.style {
+    font-size: 15px;
+    font-weight: bold;
+    height: 50px;
+    width: 100px;
+}
+
+.space {
+    margin: 1px 10px 0 10px;
+}

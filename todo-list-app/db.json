@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Wake Up Early",
+      "description": "Wake up early to go to the doctor tomorrow!",
+      "done": false
+    },
+    {
+      "id": 2,
+      "title": "Have a breakfast",
+      "description": "Have a tasty breakfast",
+      "done": false
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

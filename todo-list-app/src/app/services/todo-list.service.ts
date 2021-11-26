@@ -3,38 +3,23 @@ import { HttpClient } from '@angular/common/http';
 
 import { Task } from './../models/task.model';
 
-import { delay, of, pipe } from 'rxjs';
-import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
-//  const URL = "http://madsti.com.br:9090/todos";
+const URL = "http://localhost:3000/posts";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoListService {
 
-  constructor() {
+  constructor(private http: HttpClient, private api: ApiService) {
     
   }
 
   getTasks() {
-    
-    const objectArray: any = localStorage.getItem('Tasks');
 
-    let obs;
-
-    obs = of(objectArray);
-
-    return obs.pipe(delay(2000));
+    return this.http.get<Task[]>(URL);
 
   };
 
-  createTask(title: string, description: string) {
-
-    let objectArray: any;
-    // let object: any = 
-
-
-  }
-
-}
+};

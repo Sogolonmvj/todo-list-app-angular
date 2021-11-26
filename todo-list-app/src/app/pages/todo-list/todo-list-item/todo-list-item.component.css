@@ -19,3 +19,13 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.place {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.settings {
+  margin: 0 10px;
+}

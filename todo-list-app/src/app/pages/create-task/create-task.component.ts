@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { TodoListService } from './../../services/todo-list.service';
+import { ApiService } from './../../services/api.service';
+
+import { Task, TaskModel } from './../../models/task.model';
 
 @Component({
   selector: 'app-create-task',
@@ -9,26 +12,39 @@ import { TodoListService } from './../../services/todo-list.service';
   styleUrls: ['./create-task.component.css']
 })
 export class CreateTaskComponent implements OnInit {
-  taskForm?: FormGroup
-  counter?: Number
+  taskForm?: FormGroup;
+  
+  taskModelObj : Task = new TaskModel;
 
-  constructor(private todoListService: TodoListService) { }
+  sub: any;
+
+  constructor(private todoListService: TodoListService, private api: ApiService) { }
 
   ngOnInit(): void {
     this.taskForm = new FormGroup({
-      'id': new FormControl(null),
       'title': new FormControl(null),
       'description': new FormControl(null)
     });
   }
 
   onSubmit() {
-    let id = this.taskForm?.controls['id'].value;
-    let title = this.taskForm?.controls['title'].value;
-    let description = this.taskForm?.controls['description'].value;
+    this.taskModelObj.title = this.taskForm?.value.title;
+    this.taskModelObj.description = this.taskForm?.value.description;
 
-    console.log(id, title, description);
+    this.sub = this.api.postTask(this.taskModelObj).subscribe(res => {
+      console.log(res);
+      alert('Task Added Successfully!');
+      this.taskForm?.reset();
+      this.sub.unsubscribe();
+    })
   }
+
+  // onSubmit() {
+  //   let title = this.taskForm?.controls['title'].value;
+  //   let description = this.taskForm?.controls['description'].value;
+
+  //   console.log(title, description);
+  // }
 
 }
 
