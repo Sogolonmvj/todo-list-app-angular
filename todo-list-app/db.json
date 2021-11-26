@@ -2,14 +2,20 @@
   "posts": [
     {
       "id": 1,
-      "title": "Wake Up Early",
-      "description": "Wake up early to go to the doctor tomorrow!",
+      "title": "First Task",
+      "description": "Here I will write the description.",
       "done": false
     },
     {
       "id": 2,
-      "title": "Have a breakfast",
-      "description": "Have a tasty breakfast",
+      "title": "Second Task",
+      "description": "This task is for testing purposes.",
+      "done": false
+    },
+    {
+      "id": 3,
+      "title": "Third Test",
+      "description": "Third Description",
       "done": false
     }
   ],

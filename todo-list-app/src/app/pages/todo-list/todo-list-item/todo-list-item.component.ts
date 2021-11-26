@@ -8,8 +8,6 @@ import { Task, TaskModel } from './../../../models/task.model';
 import { ApiService } from './../../../services/api.service';
 import { TodoListService } from './../../../services/todo-list.service';
 
-import { Observable } from 'rxjs';
-
 const URL = "http://localhost:3000/posts";
 
 @Component({
@@ -24,11 +22,13 @@ export class TodoListItemComponent implements OnInit {
   @Output() warnTaskWasDone: EventEmitter<any> = new EventEmitter(); // prop that goes from child to parent
   @ViewChild('checkboxInput') checkboxInput?: ElementRef; // reference to this element
 
-  tasksList$?: Observable<Task[]>;
+  tasksList: any;
   sub: any;
+  subs: any;
   taskData: any;
   subscription: any;
   taskForm?: FormGroup;
+  editForm?: FormGroup;
   taskModelObj: Task = new TaskModel;
 
   constructor(private api: ApiService, private todoListService: TodoListService, private http: HttpClient) { }
@@ -38,7 +38,7 @@ export class TodoListItemComponent implements OnInit {
   }
 
   getColor(): string {
-    switch(this.task?.done) {
+    switch(this.taskModelObj?.done) {
       case true:
         return "#f5e769"; 
       case false:
@@ -49,7 +49,7 @@ export class TodoListItemComponent implements OnInit {
   }
 
   getClass(): string {
-    switch(this.task?.done) {
+    switch(this.taskModelObj?.done) {
       case true:
         return "bg-yellow";
       case false:
@@ -60,17 +60,24 @@ export class TodoListItemComponent implements OnInit {
   }
 
   markAsDone(event: MatCheckboxChange) {
-    // console.log(this.checkboxInput);
+    console.log(this.checkboxInput);
     this.warnTaskWasDone.emit({ id: this.taskId, value: event.checked });
+
+    this.taskModelObj.done = event.checked;
+    this.subs = this.api.updateTask(this.taskModelObj, (this.taskModelObj.id+1)).subscribe(res => {
+      console.log(res);
+      this.subs.unsubscribe();
+    })
+    console.log(this.taskModelObj.done);
   }
 
   getTasks() {
     this.subscription = this.api.getTask()
     .subscribe(res => {
-      this.tasksList$ = res;
+      this.tasksList = res;
       this.subscription.unsubscribe();
     })
-  }
+  };
 
   deleteTask(task: any) {
     this.sub = this.api.deleteTask(task.id)
@@ -84,8 +91,17 @@ export class TodoListItemComponent implements OnInit {
   // to check here
   onEdit(task: any) {
     this.taskModelObj.id = task.id;
-    this.taskForm?.controls['title'].setValue(task.title);
-    this.taskForm?.controls['description'].setValue(task.description);
+
+    console.log(task.id, task.title, task.description);
+
+    localStorage.setItem('taskObj', JSON.stringify(task));
+
+    // this.todoListService.getTasks();
+
+    // this.editTaskComponent.editForm?.controls['editTitle'].setValue(task.title);
+    // this.editTaskComponent.editForm?.controls['editDescription'].setValue(task.description);
+
+    // console.log(this.editTaskComponent.editForm?.controls['editTitle'].value, this.editTaskComponent.editForm?.controls['editDescription'].value);
   }
 
 }

@@ -1,6 +1,6 @@
 <div *ngIf="task" class="item-container">
-  <mat-checkbox #checkboxInput [checked]="task.done" (change)="markAsDone($event)"></mat-checkbox>
-  <mat-expansion-panel [ngClass]="{ 'bg-yellow': task.done }" *ngIf="task" style="flex: 1; margin: 0 10px">
+  <mat-checkbox #checkboxInput [checked]="taskModelObj.done" (change)="markAsDone($event)"></mat-checkbox>
+  <mat-expansion-panel [ngClass]="{ 'bg-yellow': taskModelObj.done }" *ngIf="task" style="flex: 1; margin: 0 10px">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ task.title }}
@@ -10,7 +10,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <ul>
-        <li>Done: {{ task.done ? 'Yes' : 'No' }}</li>
+        <li>Done: {{ taskModelObj.done ? 'Yes' : 'No' }}</li>
       </ul>
       <ng-content></ng-content>
       <div class="place">

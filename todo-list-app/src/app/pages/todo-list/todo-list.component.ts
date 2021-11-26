@@ -27,11 +27,6 @@ export class TodoListComponent implements OnInit {
       complete: () => console.log("Access finished!")
     });
 
-    // this.sub = this.todoListService.getTasks().subscribe((tasksList: Task[]) => {
-    //   // this.tasksList = tasksList;
-    //   // this.sub.unsubscribe(); // unsubscribe must be done in subscription to avoid memory leak as it stops the listening activity
-    // });
-
   }
 
   markTaskAsDone(obj: { id: number; value: boolean }) {
@@ -39,12 +34,6 @@ export class TodoListComponent implements OnInit {
     const done = obj.value;
 
     console.log(this.tasksList$); // to continue
-    // this.tasksList$.done = done;
-    // console.log(this.tasksList$[id].done);
   }
-
-  // ngOnDestroy() {
-  //   this.sub?.unsubscribe();
-  // }
 
 }
